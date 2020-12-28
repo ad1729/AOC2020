@@ -1,5 +1,5 @@
 
-def input_data(file="input-day1.txt"):
+def input_data(file="data/input-day1.txt"):
     with open(file, 'r') as f:
         lst = f.readlines()
 

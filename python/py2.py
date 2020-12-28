@@ -26,7 +26,7 @@ def test_data() -> List[Dict[str, Union[int, str]]]:
 print(f"Test data: {test_data()}")
 
 
-def input_data(file="input-day2.txt") -> List[Dict[str, Union[int, str]]]:
+def input_data(file="data/input-day2.txt") -> List[Dict[str, Union[int, str]]]:
     with open(file, 'r') as f:
         lst = f.readlines()
 
