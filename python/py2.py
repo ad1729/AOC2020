@@ -1,4 +1,4 @@
-from typing import Dict, List, Tuple, Union
+from typing import Dict, List, Union
 
 
 def extract_fields(string) -> Dict[str, Union[int, str]]:
@@ -105,7 +105,6 @@ def valid_passwords(data: List[Dict[str, Union[int, str]]],
 
 # test data
 valid_passwords(test_data(), print_test=True)
-# First policy: 2 passwords (out of 3) are valid.
 
 # input data
 valid_passwords(input_data())
