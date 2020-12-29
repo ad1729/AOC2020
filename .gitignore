@@ -1,4 +1,3 @@
-
 # Created by https://www.toptal.com/developers/gitignore/api/intellij,scala,pycharm,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij,scala,pycharm,python
 
@@ -8,6 +7,7 @@
 
 .idea
 .bsp
+*.sc
 
 # User-specific stuff
 .idea/**/workspace.xml
