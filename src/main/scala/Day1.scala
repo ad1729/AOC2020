@@ -1,16 +1,12 @@
 import scala.util.chaining._
 
-object Day1 extends InputData[Vector[Int]]{
+object Day1 extends InputData[List[Int]]{
 
-  override def process_input(contents: List[String]): Vector[Int] = {
-    val numbers = contents
-      .map(_.trim.toInt)
-      .toVector
-    
-    numbers
+  override def process_input(contents: List[String]): List[Int] = {
+    contents.map(_.trim.toInt)
   }
   
-  def two_numbers(numbers: Vector[Int]): Unit = {
+  def two_numbers(numbers: List[Int]): Unit = {
     val size = numbers.size
 
     for (i <- 0 until size)
@@ -21,7 +17,7 @@ object Day1 extends InputData[Vector[Int]]{
           println(s"x1: $first, x2: $second, sum: ${first + second}, product: ${first * second}")
   }
   
-  def three_numbers(numbers: Vector[Int]): Unit = {
+  def three_numbers(numbers: List[Int]): Unit = {
     val size = numbers.size
 
     for (i <- 0 until size)
@@ -35,7 +31,7 @@ object Day1 extends InputData[Vector[Int]]{
   }
   
   def main(args: Array[String]): Unit = {
-    val testData = Vector(1721, 979, 366, 299, 675, 1456)
+    val testData = List(1721, 979, 366, 299, 675, 1456)
     val filename = "../data/input-day1.txt"
     val inputData = filename pipe get_input pipe process_input
     
