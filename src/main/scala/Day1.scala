@@ -32,7 +32,7 @@ object Day1 extends InputData[List[Int]]{
   
   def main(args: Array[String]): Unit = {
     val testData = List(1721, 979, 366, 299, 675, 1456)
-    val filename = "../data/input-day1.txt"
+    val filename = "data/input-day1.txt"
     val inputData = filename pipe get_input pipe process_input
     
     two_numbers(testData)    

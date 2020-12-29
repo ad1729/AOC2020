@@ -47,16 +47,15 @@ object Day2 extends InputData[List[Day2Input]] {
       .split("\n")
       .toList pipe process_input
     
-    println(testData)
     println("Test data:")
+    println(testData)
     valid_passwords(testData)
 
-    val filename = "../data/input-day2.txt"
+    val filename = "data/input-day2.txt"
     val inputData = filename pipe get_input pipe process_input
     
-    println(inputData.take(5))
-    
     println("Input data:")
+    println(inputData.take(5))
     valid_passwords(inputData)
   }
 
