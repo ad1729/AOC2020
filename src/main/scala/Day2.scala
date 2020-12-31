@@ -4,7 +4,7 @@ case class Day2Input(minOccurrence: Int, maxOccurrence: Int, character: Char, pa
 
 object Day2 extends InputData[List[Day2Input]] {
   
-  override def process_input(contents: List[String]): List[Day2Input] = {
+  override def processInput(contents: List[String]): List[Day2Input] = {
     contents.map {str => 
       val splitstr = str.split(" ")
       val occurrence = splitstr(0).split("-")
@@ -17,24 +17,25 @@ object Day2 extends InputData[List[Day2Input]] {
     }
   }
   
-  def first_policy(row: Day2Input): Boolean = {
+  def firstPolicy(row: Day2Input): Boolean = {
     val occurrence = row.password.filter(_ == row.character).size
     (occurrence >= row.minOccurrence) & (occurrence <= row.maxOccurrence)
   }
   
-  def second_policy(row: Day2Input): Boolean = {
+  def secondPolicy(row: Day2Input): Boolean = {
     val mainChar = row.character
     val firstChar = row.password.charAt(row.minOccurrence - 1)
     val secondChar = row.password.charAt(row.maxOccurrence - 1)
     (firstChar == mainChar & secondChar != mainChar) | (firstChar != mainChar & secondChar == mainChar)
   }
   
-  def valid_passwords(data: List[Day2Input]): Unit = {
+  def validPasswords(data: List[Day2Input]): Unit = {
     val size = data.size
-    val first = data.map(first_policy).filter(_ == true).size
+    // TODO: refactor this to only have one line and do the printing in the main method
+    val first = data.map(firstPolicy).filter(_ == true).size
     println(s"${first} passwords (out of $size) are valid according to the first policy.")
 
-    val second = data.map(second_policy).filter(_ == true).size
+    val second = data.map(secondPolicy).filter(_ == true).size
     println(s"${second} passwords (out of $size) are valid according to the second policy.")
     
   }
@@ -45,18 +46,18 @@ object Day2 extends InputData[List[Day2Input]] {
                       |2-9 c: ccccccccc"""
       .stripMargin
       .split("\n")
-      .toList pipe process_input
+      .toList pipe processInput
     
     println("Test data:")
     println(testData)
-    valid_passwords(testData)
+    validPasswords(testData)
 
     val filename = "data/input-day2.txt"
-    val inputData = filename pipe get_input pipe process_input
+    val inputData = filename pipe getInput pipe processInput
     
     println("Input data:")
     println(inputData.take(5))
-    valid_passwords(inputData)
+    validPasswords(inputData)
   }
 
 }

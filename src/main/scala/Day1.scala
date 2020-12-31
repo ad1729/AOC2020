@@ -2,13 +2,14 @@ import scala.util.chaining._
 
 object Day1 extends InputData[List[Int]]{
 
-  override def process_input(contents: List[String]): List[Int] = {
+  override def processInput(contents: List[String]): List[Int] = {
     contents.map(_.trim.toInt)
   }
   
-  def two_numbers(numbers: List[Int]): Unit = {
+  def twoNumbers(numbers: List[Int]): Unit = {
     val size = numbers.size
 
+    // TODO: refactor this to do the printing in the main method
     for (i <- 0 until size)
       val first = numbers(i)
       for (j <- i until size)
@@ -17,9 +18,10 @@ object Day1 extends InputData[List[Int]]{
           println(s"x1: $first, x2: $second, sum: ${first + second}, product: ${first * second}")
   }
   
-  def three_numbers(numbers: List[Int]): Unit = {
+  def threeNumbers(numbers: List[Int]): Unit = {
     val size = numbers.size
 
+    // TODO: refactor this to do the printing in the main method
     for (i <- 0 until size)
       val first = numbers(i)
       for (j <- i until size)
@@ -33,12 +35,12 @@ object Day1 extends InputData[List[Int]]{
   def main(args: Array[String]): Unit = {
     val testData = List(1721, 979, 366, 299, 675, 1456)
     val filename = "data/input-day1.txt"
-    val inputData = filename pipe get_input pipe process_input
+    val inputData = filename pipe getInput pipe processInput
     
-    two_numbers(testData)    
-    two_numbers(inputData)
+    twoNumbers(testData)    
+    twoNumbers(inputData)
 
-    three_numbers(testData)
-    three_numbers(inputData)
+    threeNumbers(testData)
+    threeNumbers(inputData)
   }
 }
