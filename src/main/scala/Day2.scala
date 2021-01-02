@@ -2,6 +2,10 @@ import scala.util.chaining._
 
 case class Day2Input(minOccurrence: Int, maxOccurrence: Int, character: Char, password: String)
 
+sealed trait Policy
+case object FirstPolicy extends Policy
+case object SecondPolicy extends Policy
+
 object Day2 extends InputData[List[Day2Input]] {
   
   override def processInput(contents: List[String]): List[Day2Input] = {
@@ -29,17 +33,15 @@ object Day2 extends InputData[List[Day2Input]] {
     (firstChar == mainChar & secondChar != mainChar) | (firstChar != mainChar & secondChar == mainChar)
   }
   
-  def validPasswords(data: List[Day2Input]): Unit = {
-    val size = data.size
-    // TODO: refactor this to only have one line and do the printing in the main method
-    val first = data.map(firstPolicy).filter(_ == true).size
-    println(s"${first} passwords (out of $size) are valid according to the first policy.")
-
-    val second = data.map(secondPolicy).filter(_ == true).size
-    println(s"${second} passwords (out of $size) are valid according to the second policy.")
+  def numValidPasswords(data: List[Day2Input], policy: Policy): Int = {
+    val policyType = policy match {
+      case FirstPolicy => firstPolicy
+      case SecondPolicy => secondPolicy
+    }
     
+    data.map(policyType).filter(_ == true).size
   }
-
+  
   def main(args: Array[String]): Unit = {
     val testData = """1-3 a: abcde
                       |1-3 b: cdefg
@@ -48,16 +50,22 @@ object Day2 extends InputData[List[Day2Input]] {
       .split("\n")
       .toList pipe processInput
     
-    println("Test data:")
-    println(testData)
-    validPasswords(testData)
+//    println("Test data:")
+//    println(testData)
 
     val filename = "data/input-day2.txt"
     val inputData = filename pipe getInput pipe processInput
     
-    println("Input data:")
-    println(inputData.take(5))
-    validPasswords(inputData)
+//    println("Input data:")
+//    println(inputData.take(5))
+
+    val data = Map(("test", testData), ("input", inputData))
+    val policy = List(FirstPolicy, SecondPolicy)
+    
+    data
+      .flatMap((k, v) => policy.map(p => (k, p, v)))
+      .foreach((k, p, v) => 
+        println(s"${k.capitalize} data: ${numValidPasswords(v, p)} passwords (out of ${v.size}) are valid according to $p."))
   }
 
 }

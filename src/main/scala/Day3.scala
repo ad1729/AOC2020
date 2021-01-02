@@ -14,7 +14,7 @@ object Day3 extends InputData[Nothing] {
     while (row < (numRows - 1)) {
       row += down
       col += right  
-      // The modulo operator here can reach all columns, since the pattern repeats after the last char
+      // The modulo operator here can reach columns not in the data, since the pattern repeats after the last char
       //println(s"row: $row, col: $col, value: ${grid(row).charAt(col % numCols)}")
       if (grid(row).charAt(col % numCols) == '#')
         numTrees += 1
