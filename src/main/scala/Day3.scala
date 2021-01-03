@@ -2,6 +2,8 @@ import scala.util.chaining._
 import scala.BigInt
 
 object Day3 extends InputData[Nothing] {
+
+  override def processInput(contents: List[String]): Nothing = ???
   
   def numberOfTreesOnGrid(grid: List[String], right: Int = 3, down: Int = 1): Int = {
     val numRows = grid.size

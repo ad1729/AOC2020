@@ -54,7 +54,7 @@ object Day2 extends InputData[List[Day2Input]] {
 //    println(testData)
 
     val filename = "data/input-day2.txt"
-    val inputData = filename pipe getInput pipe processInput
+    val inputData = processInput(getInput(filename))
     
 //    println("Input data:")
 //    println(inputData.take(5))

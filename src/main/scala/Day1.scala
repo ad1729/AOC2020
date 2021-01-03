@@ -33,7 +33,7 @@ object Day1 extends InputData[List[Int]]{
   def main(args: Array[String]): Unit = {
     val testData = List(1721, 979, 366, 299, 675, 1456)
     val filename = "data/input-day1.txt"
-    val inputData = filename pipe getInput pipe processInput
+    val inputData = processInput(getInput(filename))
     val data = Map(("test", testData), ("input", inputData))
 
     data.foreach((k, v) => twoNumbers(v))
